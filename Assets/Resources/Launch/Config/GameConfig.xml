@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <Resource isResourcesLoadMode="true" />
+  <HotUpdate isHotUpdate="false" />
+  <Debug isDebugInfo="false" isDebugWarn="false" isDebugError="true" />
+  <Server url="test" pkgUpdateUrl="test" />
+  <Version showVersion="1.0.1" pkgVersion="0" versionCodeFile="version/versioncode.txt" versionDataFile="version/versionmanifest.xml" versionPkgFile="Launch/Config/GameConfig" />
+  <Games>
+    <Game id ="1" rootDir="Games/Game1" runClass="Launch.GameRunner" ui="UGUI" uiDepth="1"/>
+    <Game id ="2" rootDir="Games/Game2" runClass="Launch.GameRunner" ui="UGUI" uiDepth="2"/>
+  </Games>
+</root>
