@@ -44,13 +44,13 @@ function Main()
 	-- LuaViewMgr.Open("TestView")
 	-- LuaViewMgr.Close("Test1View")
 	-- LuaViewMgr.Open("Test1View")
-	local onDelay = function (f)
-		randomOperate()
-	end
-	LuaScheduleMgr.AddScheduler(onDelay,1,0)
+	-- local onDelay = function (f)
+	-- 	randomOperate()
+	-- end
+	-- LuaScheduleMgr.AddScheduler(onDelay,1,0)
 	
-	local onDelay1 = function (f)
-		randomOperate()
-	end
-	LuaScheduleMgr.AddScheduler(onDelay1,0.3,0)
+	-- local onDelay1 = function (f)
+	-- 	randomOperate()
+	-- end
+	-- LuaScheduleMgr.AddScheduler(onDelay1,0.3,0)
 end

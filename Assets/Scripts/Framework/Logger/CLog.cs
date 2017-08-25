@@ -9,6 +9,9 @@ namespace Launch
     public class CLog
     {
         public static LogRecorder logRecorder = new LogRecorder();
+
+        public static void Init() { }
+
         public static void Log(string msg, string color = "#ffffff")
         {
             if (GameConfig.IsDebugInfo)

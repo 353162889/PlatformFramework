@@ -17,6 +17,7 @@ namespace Launch
                 gameObject.AddComponent<ConsoleLogger>();
             }
             GameConfig.Load();
+            CLog.Init();
             List<GameCfg> games = GameConfig.GetGames();
             for (int i = 0; i < games.Count; i++)
             {
@@ -27,6 +28,9 @@ namespace Launch
             }
             AppManager.Instance.Run(1);
             //AppManager.Instance.Run(2);
+
+           
+
         }
     }
 }

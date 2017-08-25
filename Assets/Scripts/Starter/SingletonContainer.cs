@@ -14,6 +14,7 @@ namespace Launch
         public UpdateScheduler Scheduler { get; private set; }
         public ResourceMgr ResourceMgr { get; private set; }
         public AssetBundleMgr AssetBundleMgr { get; private set; }
+        public SocketClientMgr SocketClientMgr { get; private set; }
 
         void Awake()
         {
@@ -23,6 +24,7 @@ namespace Launch
             this.ResourceMgr = gameObject.AddComponentOnce<ResourceMgr>();
             this.AssetBundleMgr = gameObject.AddComponentOnce<AssetBundleMgr>();
             LuaClient = gameObject.AddComponentOnce<LuaMultiClient>();
+            this.SocketClientMgr = gameObject.AddComponentOnce<SocketClientMgr>();
         }
 
         private void OnDestroy()

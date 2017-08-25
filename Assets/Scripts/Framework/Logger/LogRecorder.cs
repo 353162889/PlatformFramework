@@ -9,6 +9,8 @@ namespace Launch
         private FileStream _file;
         private string _logFilePath;
         private BinaryWriter _fileWriter;
+        private static string DataPath = Application.dataPath;
+        private static string PersistanceDataPath = Application.persistentDataPath;
 
 
         public string LogFilePath
@@ -20,12 +22,12 @@ namespace Launch
                     if ((Application.platform == RuntimePlatform.WindowsPlayer) || (Application.platform == RuntimePlatform.WindowsEditor) ||
                         (Application.platform == RuntimePlatform.OSXPlayer) || (Application.platform == RuntimePlatform.OSXEditor))
                     {
-                        _logFilePath = Application.dataPath + "/../logInfo.log";
+                        _logFilePath = DataPath + "/../logInfo.log";
 
                     }
                     else 
                     {
-                        _logFilePath = Application.persistentDataPath + "/logInfo.log";
+                        _logFilePath = PersistanceDataPath + "/logInfo.log";
                     }
                 }
                 return _logFilePath;

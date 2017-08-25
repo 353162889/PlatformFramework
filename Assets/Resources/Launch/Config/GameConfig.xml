@@ -2,7 +2,7 @@
 <root>
   <Resource isResourcesLoadMode="true" />
   <HotUpdate isHotUpdate="false" />
-  <Debug isDebugInfo="false" isDebugWarn="false" isDebugError="true" />
+  <Debug isDebugInfo="true" isDebugWarn="true" isDebugError="true" />
   <Server url="test" pkgUpdateUrl="test" />
   <Version showVersion="1.0.1" pkgVersion="0" versionCodeFile="version/versioncode.txt" versionDataFile="version/versionmanifest.xml" versionPkgFile="Launch/Config/GameConfig" />
   <Games>
