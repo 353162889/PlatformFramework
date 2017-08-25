@@ -112,6 +112,21 @@ namespace Launch
             }
         }
 
+        public void SendMsg(SocketClientType socketClientType,ushort ID,byte[] buff)
+        {
+            SocketClient socketClient;
+            _map.TryGetValue(socketClientType, out socketClient);
+            if (socketClient != null && socketClient.Status == SocketStatus.Connected)
+            {
+                MsgPacket packet = new MsgPacket(ID, buff);
+                socketClient.SendPacket(packet);
+            }
+            else
+            {
+                SocketTools.LogError("socketClientType:" + socketClientType + " is not connected!");
+            }
+        }
+
         public void RegisterProtoType(ushort ID ,Type type)
         {
             lock(lockObj)

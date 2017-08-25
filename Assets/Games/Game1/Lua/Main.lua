@@ -53,4 +53,13 @@ function Main()
 	-- 	randomOperate()
 	-- end
 	-- LuaScheduleMgr.AddScheduler(onDelay1,0.3,0)
+
+	Launch.CTLNet.ConnectServer(1,"127.0.0.1",8080,function (finish)
+		LogColor("#ff0000","connectServer",finish)
+		Launch.CTLNet.RegisterNetMsg(1,1,function (msgId,status,data)
+			LogColor("#ff0000","Receive",msgId,status,tostring(data))
+		end)
+		Launch.CTLNet.SendMsg(1,1,string.byte("你好"))
+	end)
+
 end

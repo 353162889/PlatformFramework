@@ -29,6 +29,8 @@ public static class DelegateFactory
 		dict.Add(typeof(UnityEngine.AudioClip.PCMSetPositionCallback), UnityEngine_AudioClip_PCMSetPositionCallback);
 		dict.Add(typeof(Launch.ResourceMgr.ResourceHandler), Launch_ResourceMgr_ResourceHandler);
 		dict.Add(typeof(Launch.SchedulerHandler), Launch_SchedulerHandler);
+		dict.Add(typeof(Launch.CTLNet.NetMsgHander), Launch_CTLNet_NetMsgHander);
+		dict.Add(typeof(System.Action<bool>), System_Action_bool);
 	}
 
     [NoToLuaAttribute]
@@ -713,6 +715,104 @@ public static class DelegateFactory
 		{
 			Launch_SchedulerHandler_Event target = new Launch_SchedulerHandler_Event(func, self);
 			Launch.SchedulerHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	class Launch_CTLNet_NetMsgHander_Event : LuaDelegate
+	{
+		public Launch_CTLNet_NetMsgHander_Event(LuaFunction func) : base(func) { }
+		public Launch_CTLNet_NetMsgHander_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(int param0, int param1, LuaInterface.LuaByteBuffer param2)
+		{
+			func.BeginPCall();
+			func.Push(param0);
+			func.Push(param1);
+			func.Push(param2);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(int param0, int param1, LuaInterface.LuaByteBuffer param2)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.Push(param0);
+			func.Push(param1);
+			func.Push(param2);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public static Delegate Launch_CTLNet_NetMsgHander(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			Launch.CTLNet.NetMsgHander fn = delegate(int param0, int param1, LuaInterface.LuaByteBuffer param2) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			Launch_CTLNet_NetMsgHander_Event target = new Launch_CTLNet_NetMsgHander_Event(func);
+			Launch.CTLNet.NetMsgHander d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			Launch_CTLNet_NetMsgHander_Event target = new Launch_CTLNet_NetMsgHander_Event(func, self);
+			Launch.CTLNet.NetMsgHander d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	class System_Action_bool_Event : LuaDelegate
+	{
+		public System_Action_bool_Event(LuaFunction func) : base(func) { }
+		public System_Action_bool_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(bool param0)
+		{
+			func.BeginPCall();
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(bool param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public static Delegate System_Action_bool(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			System.Action<bool> fn = delegate(bool param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			System_Action_bool_Event target = new System_Action_bool_Event(func);
+			System.Action<bool> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			System_Action_bool_Event target = new System_Action_bool_Event(func, self);
+			System.Action<bool> d = target.CallWithSelf;
 			target.method = d.Method;
 			return d;
 		}

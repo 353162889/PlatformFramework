@@ -180,6 +180,7 @@ namespace Platform
         _GT(typeof(Launch.CTLResource)),
         _GT(typeof(Launch.CTLSchedule)),
         _GT(typeof(Launch.CTLView)),
+        _GT(typeof(Launch.CTLNet)),
         _GT(typeof(Launch.CTLTools)),
 
     };
