@@ -7,7 +7,7 @@ require 'Modules/Test/TestView_ViewCtrl'
 require 'Modules/Test1/Test1View_ViewCtrl'
 require 'Modules/Test/TestViewAnim'
 require 'Launch/Tools/Tools'
-
+require 'Proto/Msg_pb'
 
 function Main()
 	print("Start Game1")
@@ -57,9 +57,14 @@ function Main()
 	Launch.CTLNet.ConnectServer(1,"127.0.0.1",8080,function (finish)
 		LogColor("#ff0000","connectServer",finish)
 		Launch.CTLNet.RegisterNetMsg(1,1,function (msgId,status,data)
-			LogColor("#ff0000","Receive",msgId,status,tostring(data))
+			local receiveData = Msg_pb.Info()
+			receiveData:ParseFromString(data)
+			LogColor("#ff0000","Receive",msgId,status,receiveData.msg)
 		end)
-		Launch.CTLNet.SendMsg(1,1,string.byte("你好"))
+		local sendData = Msg_pb.Info()
+		sendData.msg = "你好"
+		local msg = sendData:SerializeToString()
+		Launch.CTLNet.SendMsg(1,1,msg)
 	end)
 
 end
